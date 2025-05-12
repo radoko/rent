@@ -264,22 +264,35 @@
         }
 
         header.scrolled {
-            background-color: var(--primary-dark); /* Użyj ciemniejszego koloru z palety */
+            background-color: rgba(30, 58, 41, 0.95); /* Ciemniejsze tło z przezroczystością bazujące na --primary-dark */
             padding: 1rem 0;
             box-shadow: var(--shadow-medium);
             backdrop-filter: blur(10px);
         }
 
         header.scrolled nav a {
-            color: var(--primary-dark); /* Ciemny tekst na jasnym tle */
+            color: var(--white); /* Biały tekst na ciemnym tle */
         }
 
         header.scrolled .logo-text {
-            color: var(--primary-dark);
+            color: var(--white); /* Białe logo na ciemnym tle */
         }
 
         header.scrolled .logo-text span {
-            color: var(--gold);
+            color: var(--gold); /* Złoty akcent pozostaje złoty */
+        }
+
+        header.scrolled .logo-icon {
+            color: var(--gold); /* Upewnij się, że ikona logo pozostaje złota */
+        }
+
+        header.scrolled nav a:hover,
+        header.scrolled nav a.active {
+            color: var(--gold-light); /* Jaśniejszy złoty kolor dla hoveru w stanie scrolled */
+        }
+
+        header.scrolled .menu-btn {
+            color: var(--white); /* Biały kolor dla przycisku menu */
         }
 
         .header-content {
