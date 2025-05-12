@@ -1,1736 +1,1881 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premium Apartments - Luksusowe Mieszkanie 31m² z ogródkiem</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <style>
-    :root {
-      --primary-dark: #1e3a29;
-      --primary-medium: #2d5a40;
-      --primary-light: #3a7254;
-      --gold: #cb7d62;
-      --gold-light: #e59c83;
-      --white: #ffffff;
-      --off-white: #f8f9fa;
-      --light-gray: #e9ecef;
-      --medium-gray: #adb5bd;
-      --dark-gray: #495057;
-      --black: #212529;
-      --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
-      --shadow-medium: 0 15px 40px rgba(0,0,0,0.12);
-      --shadow-hard: 0 20px 50px rgba(0,0,0,0.16);
-      --transition-fast: all 0.3s ease;
-      --transition-smooth: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-      --cubic-bezier: cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--dark-gray);
-      background-color: var(--white);
-      overflow-x: hidden;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* ===== Typography ===== */
-    h1, h2, h3, h4, h5 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      line-height: 1.3;
-      color: var(--primary-dark);
-    }
-
-    h1 {
-      font-size: clamp(3rem, 8vw, 5rem);
-      margin-bottom: 2rem;
-    }
-
-    h2 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      margin-bottom: 3rem;
-    }
-
-    h3 {
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      margin-bottom: 1.5rem;
-    }
-
-    p {
-      margin-bottom: 1.5rem;
-    }
-
-    /* ===== Layout ===== */
-    .container {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 -1rem;
-    }
-
-    .col {
-      flex: 1;
-      padding: 0 1rem;
-    }
-
-    section {
-      padding: 8rem 0;
-      position: relative;
-    }
-
-    section.light {
-      background-color: var(--white);
-    }
-
-    section.dark {
-      background-color: var(--primary-dark);
-      color: var(--white);
-    }
-
-    section.off-white {
-      background-color: var(--off-white);
-    }
-
-    /* ===== Utilities ===== */
-    .text-center {
-      text-align: center;
-    }
-
-    .text-right {
-      text-align: right;
-    }
-
-    .text-gold {
-      color: var(--gold);
-    }
-
-    .text-white {
-      color: var(--white);
-    }
-
-    .margin-b-1 {
-      margin-bottom: 1rem;
-    }
-
-    .margin-b-2 {
-      margin-bottom: 2rem;
-    }
-
-    .margin-b-3 {
-      margin-bottom: 3rem;
-    }
-
-    .uppercase {
-      text-transform: uppercase;
-    }
-
-    .letter-spacing {
-      letter-spacing: 3px;
-    }
-
-    .font-weight-semi {
-      font-weight: 600;
-    }
-
-    .relative {
-      position: relative;
-    }
-
-    /* ===== Buttons ===== */
-    .btn {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      border-radius: 0;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100%;
-      background-color: rgba(0,0,0,0.1);
-      transition: var(--transition-smooth);
-      z-index: -1;
-    }
-
-    .btn:hover::before {
-      width: 100%;
-    }
-
-    .btn-primary {
-      background-color: var(--gold);
-      color: var(--primary-dark);
-      border: 2px solid var(--gold);
-    }
-
-    .btn-outline {
-      background-color: transparent;
-      color: var(--white);
-      border: 2px solid var(--white);
-    }
-
-    .btn-outline:hover {
-      background-color: var(--white);
-      color: var(--primary-dark);
-    }
-
-    .btn-outline-gold {
-      background-color: transparent;
-      color: var(--gold);
-      border: 2px solid var(--gold);
-    }
-
-    .btn-outline-gold:hover {
-      background-color: var(--gold);
-      color: var(--primary-dark);
-    }
-
-    /* ===== Header ===== */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 2rem 0;
-      z-index: 1000;
-      transition: var(--transition-smooth);
-    }
-
-    header.scrolled {
-      background-color: rgba(12, 28, 44, 0.95);
-      padding: 1rem 0;
-      box-shadow: var(--shadow-medium);
-      backdrop-filter: blur(10px);
-    }
-
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .logo-icon {
-      color: var(--gold);
-      font-size: 1.8rem;
-      margin-right: 0.5rem;
-    }
-
-    .logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .logo-text span {
-      color: var(--gold);
-    }
-
-    nav {
-      display: flex;
-      gap: 2.5rem;
-    }
-
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      transition: var(--transition-smooth);
-      position: relative;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -0.5rem;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--gold);
-      transition: var(--transition-smooth);
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: var(--gold);
-    }
-
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
-
-    .menu-btn {
-      display: none;
-      color: var(--white);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* ===== Hero Section ===== */
-    .hero {
-      height: 100vh;
-      padding: 0;
-      position: relative;
-      display: flex;
-      align-items: center;
-      background-color: var(--primary-dark);
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=90');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.5;
-      z-index: 0;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, rgba(12, 28, 44, 0.9), rgba(12, 28, 44, 0.7));
-      z-index: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 650px;
-    }
-
-    .hero-subtitle {
-      color: var(--gold);
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      color: var(--white);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero p {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1.1rem;
-      margin-bottom: 2.5rem;
-      max-width: 580px;
-    }
-
-    .hero-price {
-      display: inline-block;
-      background-color: var(--gold);
-      color: var(--primary-dark);
-      padding: 0.5rem 1.5rem;
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 2.5rem;
-      border-radius: 5px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .scroll-down {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--white);
-      font-size: 1.5rem;
-      animation: bounce 2s infinite;
-      cursor: pointer;
-      z-index: 2;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0) translateX(-50%);
-      }
-      40% {
-        transform: translateY(-20px) translateX(-50%);
-      }
-      60% {
-        transform: translateY(-10px) translateX(-50%);
-      }
-    }
-
-    /* ===== Section Titles ===== */
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-      position: relative;
-    }
-
-    .section-header h2 {
-      margin-bottom: 1.5rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-header h2::after {
-      content: '';
-      position: absolute;
-      bottom: -1rem;
-      left: 50%;
-      width: 80px;
-      height: 3px;
-      background-color: var(--gold);
-      transform: translateX(-50%);
-    }
-
-    .section-header p {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-    }
-
-    .section-header.text-left {
-      text-align: left;
-    }
-
-    .section-header.text-left h2::after {
-      left: 0;
-      transform: none;
-    }
-
-    .dark .section-header h2 {
-      color: var(--white);
-    }
-
-    /* ===== Property Details ===== */
-    .property-details-section {
-      background-color: var(--white);
-      z-index: 2;
-    }
-
-    .property-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .property-text h3 {
-      font-size: 2.2rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.3;
-    }
-
-    .property-text p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-
-    .property-info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin: 3rem 0;
-    }
-
-    .info-card {
-      background-color: var(--off-white);
-      padding: 1.5rem;
-      text-align: center;
-      border-radius: 5px;
-      box-shadow: var(--shadow-soft);
-      transition: var(--transition-smooth);
-    }
-
-    .info-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-medium);
-    }
-
-    .info-card i {
-      color: var(--gold);
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .info-card h5 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .info-card p {
-      font-size: 0.9rem;
-      margin-bottom: 0;
-    }
-
-    .features-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.2rem;
-      margin: 2.5rem 0;
-    }
-
-    .features-list li {
-      padding-left: 2rem;
-      position: relative;
-      font-size: 1rem;
-    }
-
-    .features-list li::before {
-      content: "\f00c";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      color: var(--gold);
-      position: absolute;
-      left: 0;
-      top: 0.1rem;
-    }
-
-    .highlight-box {
-      background-color: var(--off-white);
-      border-left: 4px solid var(--gold);
-      padding: 2rem;
-      margin: 2.5rem 0;
-      border-radius: 0 5px 5px 0;
-      box-shadow: var(--shadow-soft);
-      transition: var(--transition-smooth);
-    }
-
-    .highlight-box:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-medium);
-    }
-
-    .highlight-box p {
-      margin-bottom: 0;
-      font-weight: 500;
-    }
-
-    .property-image {
-      position: relative;
-      overflow: hidden;
-      border-radius: 5px;
-      box-shadow: var(--shadow-hard);
-      height: 600px;
-    }
-
-    .property-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition-smooth);
-    }
-
-    .property-image:hover img {
-      transform: scale(1.05);
-    }
-
-    .property-image::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 30%;
-      background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
-      z-index: 1;
-    }
-
-    /* ===== Detailed Specs Section ===== */
-    .specs-section {
-      background-color: var(--off-white);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .specs-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 300px;
-      height: 300px;
-      background-color: rgba(212, 175, 55, 0.05);
-      border-radius: 50%;
-      transform: translate(150px, -150px);
-    }
-
-    .specs-section::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 200px;
-      height: 200px;
-      background-color: rgba(12, 28, 44, 0.05);
-      border-radius: 50%;
-      transform: translate(-100px, 100px);
-    }
-
-    .specs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .spec-card {
-      background-color: var(--white);
-      padding: 2rem;
-      border-radius: 5px;
-      box-shadow: var(--shadow-soft);
-      transition: var(--transition-smooth);
-    }
-
-    .spec-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-medium);
-    }
-
-    .spec-card h4 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      color: var(--primary-dark);
-      position: relative;
-      padding-bottom: 1rem;
-    }
-
-    .spec-card h4::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 2px;
-      background-color: var(--gold);
-    }
-
-    .spec-list {
-      list-style: none;
-    }
-
-    .spec-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--light-gray);
-    }
-
-    .spec-item:last-child {
-      border-bottom: none;
-    }
-
-    .spec-name {
-      font-weight: 400;
-      color: var(--dark-gray);
-    }
-
-    .spec-value {
-      font-weight: 500;
-      color: var(--primary-dark);
-    }
-
-    /* ===== Gallery Section ===== */
-    .gallery-section {
-      background-color: var(--white);
-      overflow: hidden;
-    }
-
-    .gallery-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .gallery-tab {
-      padding: 0.7rem 1.5rem;
-      background: transparent;
-      border: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--dark-gray);
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      position: relative;
-    }
-
-    .gallery-tab::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--gold);
-      transition: var(--transition-smooth);
-    }
-
-    .gallery-tab:hover,
-    .gallery-tab.active {
-      color: var(--gold);
-    }
-
-    .gallery-tab:hover::after,
-    .gallery-tab.active::after {
-      width: 100%;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .gallery-item {
-      position: relative;
-      border-radius: 5px;
-      overflow: hidden;
-      height: 350px;
-      box-shadow: var(--shadow-soft);
-      cursor: pointer;
-    }
-
-    .gallery-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7));
-      z-index: 1;
-      opacity: 0;
-      transition: var(--transition-smooth);
-    }
-
-    .gallery-item:hover::before {
-      opacity: 1;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition-smooth);
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-medium);
-    }
-
-    .gallery-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 2rem;
-      color: var(--white);
-      z-index: 2;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: var(--transition-smooth);
-    }
-
-    .gallery-item:hover .gallery-caption {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .gallery-caption h4 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--white);
-    }
-
-    .gallery-caption p {
-      font-size: 0.9rem;
-      margin-bottom: 0;
-      opacity: 0.9;
-    }
-
-    /* ===== Location Section ===== */
-    .location-section {
-      background-color: var(--off-white);
-    }
-
-    .location-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .location-text p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-
-    .location-features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-
-    .location-feature {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-
-    .location-feature i {
-      color: var(--gold);
-      font-size: 1.5rem;
-      margin-top: 0.2rem;
-    }
-
-    .location-feature-text h5 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .location-feature-text p {
-      font-size: 0.9rem;
-      margin-bottom: 0;
-      opacity: 0.8;
-    }
-
-    .map-container {
-      height: 500px;
-      border-radius: 5px;
-      overflow: hidden;
-      box-shadow: var(--shadow-hard);
-    }
-
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* ===== Contact Section ===== */
-    .contact-section {
-      background-color: var(--primary-dark);
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 50%;
-      height: 100%;
-      background-image: url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.1;
-    }
-
-    .contact-section h2 {
-      color: var(--white);
-    }
-
-    .contact-section .section-header h2::after {
-      background-color: var(--gold);
-    }
-
-    .contact-content {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .contact-info h3 {
-      color: var(--white);
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .contact-info p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      opacity: 0.9;
-      margin-bottom: 3rem;
-    }
-
-    .contact-method {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 2rem;
-    }
-
-    .contact-icon {
-      width: 50px;
-      height: 50px;
-      background-color: rgba(212, 175, 55, 0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 1.5rem;
-    }
-
-    .contact-icon i {
-      color: var(--gold);
-      font-size: 1.2rem;
-    }
-
-    .contact-text h4 {
-      color: var(--gold);
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-text p {
-      font-size: 1rem;
-      margin-bottom: 0;
-    }
-
-    .contact-form {
-      background-color: var(--white);
-      padding: 3rem;
-      border-radius: 5px;
-      box-shadow: var(--shadow-hard);
-    }
-
-    .contact-form h3 {
-      color: var(--primary-dark);
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 1rem 1.2rem;
-      border: 1px solid var(--light-gray);
-      border-radius: 5px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      color: var(--dark-gray);
-      transition: var(--transition-smooth);
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
-    }
-
-    textarea.form-control {
-      min-height: 150px;
-      resize: vertical;
-    }
-
-    .form-btn {
-      background-color: var(--gold);
-      color: var(--primary-dark);
-      border: none;
-      padding: 1rem 2rem;
-      border-radius: 5px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      width: 100%;
-    }
-
-    .form-btn:hover {
-      background-color: var(--primary-dark);
-      color: var(--white);
-    }
-
-    /* ===== Footer ===== */
-    footer {
-      background-color: var(--black);
-      color: var(--white);
-      padding: 5rem 0 2rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 4rem;
-    }
-    .footer-col h4 {
-      color: var(--white);
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-      padding-bottom: 1rem;
-    }
-
-    .footer-col h4::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 40px;
-      height: 2px;
-      background-color: var(--gold);
-    }
-
-    .footer-about p {
-      font-size: 0.9rem;
-      opacity: 0.8;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .footer-logo-text span {
-      color: var(--gold);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: var(--white);
-      font-size: 1rem;
-      transition: var(--transition-smooth);
-    }
-
-    .social-link:hover {
-      background-color: var(--gold);
-      color: var(--primary-dark);
-      transform: translateY(-5px);
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 1rem;
-    }
-
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.7);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: var(--transition-smooth);
-    }
-
-    .footer-links a:hover {
-      color: var(--gold);
-      padding-left: 0.5rem;
-    }
-
-    .copyright {
-      text-align: center;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.6);
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* ===== Animations ===== */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-in.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 1200px) {
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem 5rem;
-      }
-
-      .property-grid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-      }
-
-      .location-content {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-      }
-
-      .specs-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 992px) {
-      .contact-content {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-      }
-
-      .location-features {
-        grid-template-columns: 1fr;
-      }
-
-      nav {
-        display: none;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .hero-content {
-        max-width: 90%;
-      }
-    }
-
-    @media (max-width: 768px) {
-      section {
-        padding: 5rem 0;
-      }
-
-      .property-info-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .features-list {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      }
-
-      .specs-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .property-info-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-
-      .gallery-tabs {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .gallery-tab {
-        width: 100%;
-        text-align: center;
-      }
-
-      .container {
-        padding: 0 1.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Apartments - Luksusowe Mieszkanie 31m² z ogródkiem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        (function() {
+            // Poczekaj na pełne załadowanie strony
+            window.onload = function() {
+                var header = document.querySelector('header');
+
+                if (!header) {
+                    console.error('Nie znaleziono elementu header!');
+                    return;
+                }
+
+                // Funkcja sprawdzająca przewijanie
+                function handleScroll() {
+                    if (window.pageYOffset > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                }
+
+                // Inicjalne sprawdzenie
+                handleScroll();
+
+                // Nasłuchiwanie zdarzenia przewijania
+                window.addEventListener('scroll', handleScroll);
+            };
+        })();
+    </script>
+    <style>
+        :root {
+            --primary-dark: #1e3a29;
+            --primary-medium: #2d5a40;
+            --primary-light: #3a7254;
+            --gold: #cb7d62;
+            --gold-light: #e59c83;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #adb5bd;
+            --dark-gray: #495057;
+            --black: #212529;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --shadow-hard: 0 20px 50px rgba(0, 0, 0, 0.16);
+            --transition-fast: all 0.3s ease;
+            --transition-smooth: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --cubic-bezier: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ===== Typography ===== */
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary-dark);
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 3rem;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== Layout ===== */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -1rem;
+        }
+
+        .col {
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        section.light {
+            background-color: var(--white);
+        }
+
+        section.dark {
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        section.off-white {
+            background-color: var(--off-white);
+        }
+
+        /* ===== Utilities ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-gold {
+            color: var(--gold);
+        }
+
+        .text-white {
+            color: var(--white);
+        }
+
+        .margin-b-1 {
+            margin-bottom: 1rem;
+        }
+
+        .margin-b-2 {
+            margin-bottom: 2rem;
+        }
+
+        .margin-b-3 {
+            margin-bottom: 3rem;
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        .letter-spacing {
+            letter-spacing: 3px;
+        }
+
+        .font-weight-semi {
+            font-weight: 600;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 0;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: var(--transition-smooth);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--primary-dark);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-dark);
+        }
+
+        .btn-outline-gold {
+            background-color: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-outline-gold:hover {
+            background-color: var(--gold);
+            color: var(--primary-dark);
+        }
+
+        /* ===== Header ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 0;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+
+        header.scrolled {
+            background-color: var(--primary-dark); /* Użyj ciemniejszego koloru z palety */
+            padding: 1rem 0;
+            box-shadow: var(--shadow-medium);
+            backdrop-filter: blur(10px);
+        }
+
+        header.scrolled nav a {
+            color: var(--primary-dark); /* Ciemny tekst na jasnym tle */
+        }
+
+        header.scrolled .logo-text {
+            color: var(--primary-dark);
+        }
+
+        header.scrolled .logo-text span {
+            color: var(--gold);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-right: 0.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .logo-text span {
+            color: var(--gold);
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--gold);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            height: 100vh;
+            padding: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: var(--primary-dark);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=90');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(12, 28, 44, 0.9), rgba(12, 28, 44, 0.7));
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 650px;
+        }
+
+        .hero-subtitle {
+            color: var(--gold);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 580px;
+        }
+
+        .hero-price {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--primary-dark);
+            padding: 0.5rem 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            border-radius: 5px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        /* ===== Section Titles ===== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-header h2 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            transform: translateX(-50%);
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .section-header.text-left {
+            text-align: left;
+        }
+
+        .section-header.text-left h2::after {
+            left: 0;
+            transform: none;
+        }
+
+        .dark .section-header h2 {
+            color: var(--white);
+        }
+
+        /* ===== Property Details ===== */
+        .property-details-section {
+            background-color: var(--white);
+            z-index: 2;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .property-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .property-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .property-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .info-card {
+            background-color: var(--off-white);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .info-card i {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h5 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin: 2.5rem 0;
+        }
+
+        .features-list li {
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .features-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+        }
+
+        .highlight-box {
+            background-color: var(--off-white);
+            border-left: 4px solid var(--gold);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border-radius: 0 5px 5px 0;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+
+        .highlight-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .property-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: var(--shadow-hard);
+            height: 600px;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .property-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .property-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+            z-index: 1;
+        }
+
+        /* ===== Detailed Specs Section ===== */
+        .specs-section {
+            background-color: var(--off-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specs-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(212, 175, 55, 0.05);
+            border-radius: 50%;
+            transform: translate(150px, -150px);
+        }
+
+        .specs-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(12, 28, 44, 0.05);
+            border-radius: 50%;
+            transform: translate(-100px, 100px);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .spec-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+
+        .spec-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .spec-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .spec-card h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+
+        .spec-name {
+            font-weight: 400;
+            color: var(--dark-gray);
+        }
+
+        .spec-value {
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        /* ===== Gallery Section ===== */
+        .gallery-section {
+            background-color: var(--white);
+            overflow: hidden;
+        }
+
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery-tab {
+            padding: 0.7rem 1.5rem;
+            background: transparent;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .gallery-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-tab:hover,
+        .gallery-tab.active {
+            color: var(--gold);
+        }
+
+        .gallery-tab:hover::after,
+        .gallery-tab.active::after {
+            width: 100%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7));
+            z-index: 1;
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            color: var(--white);
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-caption h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .gallery-caption p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+
+        /* ===== Location Section ===== */
+        .location-section {
+            background-color: var(--off-white);
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .location-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .location-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .location-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .location-feature i {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-top: 0.2rem;
+        }
+
+        .location-feature-text h5 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-feature-text p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            opacity: 0.8;
+        }
+
+        .map-container {
+            height: 500px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hard);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== Contact Section ===== */
+        .contact-section {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+
+        .contact-section h2 {
+            color: var(--white);
+        }
+
+        .contact-section .section-header h2::after {
+            background-color: var(--gold);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info h3 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+        }
+
+        .contact-icon i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            color: var(--gold);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-text p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 3rem;
+            border-radius: 5px;
+            box-shadow: var(--shadow-hard);
+        }
+
+        .contact-form h3 {
+            color: var(--primary-dark);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: var(--dark-gray);
+            transition: var(--transition-smooth);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-btn {
+            background-color: var(--gold);
+            color: var(--primary-dark);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            width: 100%;
+        }
+
+        .form-btn:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .footer-about p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .footer-logo-text span {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .social-link:hover {
+            background-color: var(--gold);
+            color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 0.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ===== Animations ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1200px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem 5rem;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .location-features {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 5rem 0;
+            }
+
+            .property-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .property-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .gallery-tabs {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .gallery-tab {
+                width: 100%;
+                text-align: center;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
 <header id="site-header">
-  <div class="container">
-    <div class="header-content">
-      <a href="#" class="logo">
-        <i class="fas fa-building logo-icon"></i>
-        <span class="logo-text">Premium<span>Apartments</span></span>
-      </a>
-      <nav>
-        <a href="#about" class="active">O mieszkaniu</a>
-        <a href="#specs">Szczegóły</a>
-        <a href="#gallery">Galeria</a>
-        <a href="#location">Lokalizacja</a>
-        <a href="#contact">Kontakt</a>
-      </nav>
-      <div class="menu-btn">
-        <i class="fas fa-bars"></i>
-      </div>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-building logo-icon"></i>
+                <span class="logo-text">Premium<span>Apartments</span></span>
+            </a>
+            <nav>
+                <a href="#about" class="active">O mieszkaniu</a>
+                <a href="#specs">Szczegóły</a>
+                <a href="#gallery">Galeria</a>
+                <a href="#location">Lokalizacja</a>
+                <a href="#contact">Kontakt</a>
+            </nav>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
     </div>
-  </div>
 </header>
 
 <section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <p class="hero-subtitle">Oferta najmu</p>
-      <h1>Mieszkanie 31m² z&nbsp;ogródkiem</h1>
-      <p>Nowoczesne mieszkanie na parterze z własnym ogródkiem i miejscem parkingowym w cichej i bezpiecznej okolicy. Możliwość wystawienia faktury VAT.</p>
-      <div class="hero-price">
-        3 100 zł / miesiąc
-      </div>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">Umów prezentację</a>
-        <a href="#gallery" class="btn btn-outline">Zobacz galerię</a>
-      </div>
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-subtitle">Oferta najmu</p>
+            <h1>Mieszkanie 31m² z&nbsp;ogródkiem</h1>
+            <p>Nowoczesne mieszkanie na parterze z własnym ogródkiem i miejscem parkingowym w cichej i bezpiecznej
+                okolicy. Możliwość wystawienia faktury VAT.</p>
+            <div class="hero-price">
+                3 100 zł / miesiąc
+            </div>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Umów prezentację</a>
+                <a href="#gallery" class="btn btn-outline">Zobacz galerię</a>
+            </div>
+        </div>
     </div>
-  </div>
-  <a href="#about" class="scroll-down">
-    <i class="fas fa-chevron-down"></i>
-  </a>
+    <a href="#about" class="scroll-down">
+        <i class="fas fa-chevron-down"></i>
+    </a>
 </section>
 
 <section id="about" class="property-details-section light">
-  <div class="container">
-    <div class="section-header">
-      <h2>O Mieszkaniu</h2>
-      <p>Wygodne i funkcjonalne mieszkanie, które spełni oczekiwania nawet najbardziej wymagających najemców.</p>
-    </div>
-
-    <div class="property-grid">
-      <div class="property-text">
-        <h3>Mieszkanie 31 m² przy ul. Przy Torach 4</h3>
-        <p>Do wynajęcia w pełni wyposażone mieszkanie o powierzchni 31 m², położone na parterze nowoczesnego budynku z 2022 roku przy ul. Przy Torach 4 w dzielnicy Raków-Włochy. Idealne dla singla, pary lub osób ceniących funkcjonalność i wygodę – zarówno na krótszy, jak i dłuższy okres.</p>
-
-        <div class="property-info-grid">
-          <div class="info-card">
-            <i class="fas fa-expand"></i>
-            <h5>Powierzchnia</h5>
-            <p>31 m²</p>
-          </div>
-          <div class="info-card">
-            <i class="fas fa-leaf"></i>
-            <h5>Ogródek</h5>
-            <p>Prywatny</p>
-          </div>
-          <div class="info-card">
-            <i class="fas fa-car"></i>
-            <h5>Parking</h5>
-            <p>Dostępny</p>
-          </div>
+    <div class="container">
+        <div class="section-header">
+            <h2>O Mieszkaniu</h2>
+            <p>Wygodne i funkcjonalne mieszkanie, które spełni oczekiwania nawet najbardziej wymagających najemców.</p>
         </div>
 
-        <h3>W skład mieszkania wchodzą:</h3>
-        <ul class="features-list">
-          <li>Przestronny pokój dzienny z aneksem kuchennym</li>
-          <li>Aneks kuchenny z pełnym wyposażeniem (zmywarka, kuchenka, lodówka, piekarnik)</li>
-          <li>Pralka i suszarka</li>
-          <li>Wygodne łóżko oraz rozkładana kanapa z funkcją spania</li>
-          <li>Strefa wypoczynkowa i jadalniana</li>
-          <li>Funkcjonalna łazienka z prysznicem</li>
-          <li>Prywatny ogródek z miejscem do wypoczynku</li>
-        </ul>
+        <div class="property-grid">
+            <div class="property-text">
+                <h3>Mieszkanie 31 m² przy ul. Przy Torach 4</h3>
+                <p>Do wynajęcia w pełni wyposażone mieszkanie o powierzchni 31 m², położone na parterze nowoczesnego
+                    budynku z 2022 roku przy ul. Przy Torach 4 w dzielnicy Raków-Włochy. Idealne dla singla, pary lub
+                    osób ceniących funkcjonalność i wygodę – zarówno na krótszy, jak i dłuższy okres.</p>
 
-        <div class="highlight-box">
-          <p>Mieszkanie jest gotowe do wprowadzenia się od zaraz. Możliwość wystawienia faktury VAT.</p>
+                <div class="property-info-grid">
+                    <div class="info-card">
+                        <i class="fas fa-expand"></i>
+                        <h5>Powierzchnia</h5>
+                        <p>31 m²</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-leaf"></i>
+                        <h5>Ogródek</h5>
+                        <p>Prywatny</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-car"></i>
+                        <h5>Parking</h5>
+                        <p>Dostępny</p>
+                    </div>
+                </div>
+
+                <h3>W skład mieszkania wchodzą:</h3>
+                <ul class="features-list">
+                    <li>Przestronny pokój dzienny z aneksem kuchennym</li>
+                    <li>Aneks kuchenny z pełnym wyposażeniem (zmywarka, kuchenka, lodówka, piekarnik)</li>
+                    <li>Pralka i suszarka</li>
+                    <li>Wygodne łóżko oraz rozkładana kanapa z funkcją spania</li>
+                    <li>Strefa wypoczynkowa i jadalniana</li>
+                    <li>Funkcjonalna łazienka z prysznicem</li>
+                    <li>Prywatny ogródek z miejscem do wypoczynku</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p>Mieszkanie jest gotowe do wprowadzenia się od zaraz. Możliwość wystawienia faktury VAT.</p>
+                </div>
+            </div>
+
+            <div class="property-image">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                     alt="Zdjęcie mieszkania">
+            </div>
         </div>
-      </div>
-
-      <div class="property-image">
-        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Zdjęcie mieszkania">
-      </div>
     </div>
-  </div>
 </section>
 
 <section id="specs" class="specs-section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Szczegółowe Informacje</h2>
-      <p>Poznaj wszystkie detale dotyczące naszej oferty</p>
+    <div class="container">
+        <div class="section-header">
+            <h2>Szczegółowe Informacje</h2>
+            <p>Poznaj wszystkie detale dotyczące naszej oferty</p>
+        </div>
+
+        <div class="specs-grid">
+            <div class="spec-card">
+                <h4>Informacje podstawowe</h4>
+                <ul class="spec-list">
+                    <li class="spec-item">
+                        <span class="spec-name">Czynsz administracyjny</span>
+                        <span class="spec-value">500 zł</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Kaucja</span>
+                        <span class="spec-value">6 200 zł</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Liczba pokoi</span>
+                        <span class="spec-value">1</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Piętro</span>
+                        <span class="spec-value">Parter z 6</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Stan wykończenia</span>
+                        <span class="spec-value">Do zamieszkania</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Ogrzewanie</span>
+                        <span class="spec-value">Miejskie</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="spec-card">
+                <h4>Budynek i otoczenie</h4>
+                <ul class="spec-list">
+                    <li class="spec-item">
+                        <span class="spec-name">Rok budowy</span>
+                        <span class="spec-value">2022</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Winda</span>
+                        <span class="spec-value">Tak</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Rodzaj zabudowy</span>
+                        <span class="spec-value">Blok</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Teren</span>
+                        <span class="spec-value">Zamknięty</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Monitoring/Ochrona</span>
+                        <span class="spec-value">Tak</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Miejsce parkingowe</span>
+                        <span class="spec-value">Opcjonalne</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="spec-card">
+                <h4>Warunki finansowe</h4>
+                <ul class="spec-list">
+                    <li class="spec-item">
+                        <span class="spec-name">Czynsz najmu</span>
+                        <span class="spec-value">3 100 zł/msc</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Miejsce parkingowe</span>
+                        <span class="spec-value">+250 zł/msc</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Forma płatności</span>
+                        <span class="spec-value">Przelew</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Dostępność FV</span>
+                        <span class="spec-value">Tak (VAT)</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Okres najmu</span>
+                        <span class="spec-value">Minimum rok</span>
+                    </li>
+                    <li class="spec-item">
+                        <span class="spec-name">Ogłoszeniodawca</span>
+                        <span class="spec-value">Prywatny</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-
-    <div class="specs-grid">
-      <div class="spec-card">
-        <h4>Informacje podstawowe</h4>
-        <ul class="spec-list">
-          <li class="spec-item">
-            <span class="spec-name">Czynsz administracyjny</span>
-            <span class="spec-value">500 zł</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Kaucja</span>
-            <span class="spec-value">6 200 zł</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Liczba pokoi</span>
-            <span class="spec-value">1</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Piętro</span>
-            <span class="spec-value">Parter z 6</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Stan wykończenia</span>
-            <span class="spec-value">Do zamieszkania</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Ogrzewanie</span>
-            <span class="spec-value">Miejskie</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="spec-card">
-        <h4>Budynek i otoczenie</h4>
-        <ul class="spec-list">
-          <li class="spec-item">
-            <span class="spec-name">Rok budowy</span>
-            <span class="spec-value">2022</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Winda</span>
-            <span class="spec-value">Tak</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Rodzaj zabudowy</span>
-            <span class="spec-value">Blok</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Teren</span>
-            <span class="spec-value">Zamknięty</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Monitoring/Ochrona</span>
-            <span class="spec-value">Tak</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Miejsce parkingowe</span>
-            <span class="spec-value">Opcjonalne</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="spec-card">
-        <h4>Warunki finansowe</h4>
-        <ul class="spec-list">
-          <li class="spec-item">
-            <span class="spec-name">Czynsz najmu</span>
-            <span class="spec-value">3 100 zł/msc</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Miejsce parkingowe</span>
-            <span class="spec-value">+250 zł/msc</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Forma płatności</span>
-            <span class="spec-value">Przelew</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Dostępność FV</span>
-            <span class="spec-value">Tak (VAT)</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Okres najmu</span>
-            <span class="spec-value">Minimum rok</span>
-          </li>
-          <li class="spec-item">
-            <span class="spec-name">Ogłoszeniodawca</span>
-            <span class="spec-value">Prywatny</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section id="gallery" class="gallery-section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Galeria</h2>
-      <p>Zobacz jak prezentuje się nasza przestrzeń z każdej perspektywy</p>
-    </div>
+    <div class="container">
+        <div class="section-header">
+            <h2>Galeria</h2>
+            <p>Zobacz jak prezentuje się nasza przestrzeń z każdej perspektywy</p>
+        </div>
 
-    <div class="gallery-tabs">
-      <button class="gallery-tab active">Wszystkie</button>
-      <button class="gallery-tab">Wnętrze</button>
-      <button class="gallery-tab">Ogródek</button>
-      <button class="gallery-tab">Łazienka</button>
-      <button class="gallery-tab">Budynek</button>
-    </div>
+        <div class="gallery-tabs">
+            <button class="gallery-tab active">Wszystkie</button>
+            <button class="gallery-tab">Wnętrze</button>
+            <button class="gallery-tab">Ogródek</button>
+            <button class="gallery-tab">Łazienka</button>
+            <button class="gallery-tab">Budynek</button>
+        </div>
 
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Aneks kuchenny">
-        <div class="gallery-caption">
-          <h4>Aneks kuchenny</h4>
-          <p>W pełni wyposażony w nowoczesny sprzęt AGD</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                     alt="Aneks kuchenny">
+                <div class="gallery-caption">
+                    <h4>Aneks kuchenny</h4>
+                    <p>W pełni wyposażony w nowoczesny sprzęt AGD</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                     alt="Strefa wypoczynkowa">
+                <div class="gallery-caption">
+                    <h4>Strefa wypoczynkowa</h4>
+                    <p>Komfortowa przestrzeń do relaksu</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                     alt="Łazienka">
+                <div class="gallery-caption">
+                    <h4>Łazienka</h4>
+                    <p>Nowoczesna łazienka z prysznicem</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                     alt="Ogródek">
+                <div class="gallery-caption">
+                    <h4>Prywatny ogródek</h4>
+                    <p>Przestrzeń do relaksu na świeżym powietrzu</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                     alt="Strefa jadalniana">
+                <div class="gallery-caption">
+                    <h4>Strefa jadalniana</h4>
+                    <p>Wygodne miejsce do wspólnych posiłków</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1551516594-56cb78394645?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                     alt="Widok ogólny">
+                <div class="gallery-caption">
+                    <h4>Przestrzeń dzienna</h4>
+                    <p>Otwarta i funkcjonalna aranżacja</p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Strefa wypoczynkowa">
-        <div class="gallery-caption">
-          <h4>Strefa wypoczynkowa</h4>
-          <p>Komfortowa przestrzeń do relaksu</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Łazienka">
-        <div class="gallery-caption">
-          <h4>Łazienka</h4>
-          <p>Nowoczesna łazienka z prysznicem</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ogródek">
-        <div class="gallery-caption">
-          <h4>Prywatny ogródek</h4>
-          <p>Przestrzeń do relaksu na świeżym powietrzu</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Strefa jadalniana">
-        <div class="gallery-caption">
-          <h4>Strefa jadalniana</h4>
-          <p>Wygodne miejsce do wspólnych posiłków</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1551516594-56cb78394645?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Widok ogólny">
-        <div class="gallery-caption">
-          <h4>Przestrzeń dzienna</h4>
-          <p>Otwarta i funkcjonalna aranżacja</p>
-        </div>
-      </div>
     </div>
-  </div>
 </section>
 
-<section id="location" class="location-section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Lokalizacja</h2>
-      <p>Idealne położenie z doskonałym dostępem do komunikacji i udogodnień</p>
-    </div>
+<!--<section id="location" class="location-section">-->
+<!--  <div class="container">-->
+<!--    <div class="section-header">-->
+<!--      <h2>Lokalizacja</h2>-->
+<!--      <p>Idealne położenie z doskonałym dostępem do komunikacji i udogodnień</p>-->
+<!--    </div>-->
 
-    <div class="location-content">
-      <div class="location-text">
-        <p>Mieszkanie znajduje się przy ul. Przy Torach 4 w dzielnicy Raków, Włochy w Warszawie. Cicha i spokojna okolica z doskonałym dostępem do komunikacji miejskiej oraz infrastruktury miejskiej.</p>
+<!--    <div class="location-content">-->
+<!--      <div class="location-text">-->
+<!--        <p>Mieszkanie znajduje się przy ul. Przy Torach 4 w dzielnicy Raków, Włochy w Warszawie. Cicha i spokojna okolica z doskonałym dostępem do komunikacji miejskiej oraz infrastruktury miejskiej.</p>-->
 
-        <div class="highlight-box">
-          <p><strong>Miejsce parkingowe:</strong> Opcjonalnie za dodatkową opłatą 250 zł/msc</p>
+<!--        <div class="highlight-box">-->
+<!--          <p><strong>Miejsce parkingowe:</strong> Opcjonalnie za dodatkową opłatą 250 zł/msc</p>-->
+<!--        </div>-->
+
+<!--        <div class="location-features">-->
+<!--          <div class="location-feature">-->
+<!--            <i class="fas fa-bus"></i>-->
+<!--            <div class="location-feature-text">-->
+<!--              <h5>Transport</h5>-->
+<!--              <p>Doskonałe połączenia komunikacyjne</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="location-feature">-->
+<!--            <i class="fas fa-shopping-basket"></i>-->
+<!--            <div class="location-feature-text">-->
+<!--              <h5>Sklepy</h5>-->
+<!--              <p>Lokalne sklepy i centrum handlowe w pobliżu</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="location-feature">-->
+<!--            <i class="fas fa-tree"></i>-->
+<!--            <div class="location-feature-text">-->
+<!--              <h5>Tereny zielone</h5>-->
+<!--              <p>Park w zasięgu spaceru</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="location-feature">-->
+<!--            <i class="fas fa-shield-alt"></i>-->
+<!--            <div class="location-feature-text">-->
+<!--              <h5>Bezpieczeństwo</h5>-->
+<!--              <p>Teren zamknięty, monitoring, ochrona</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="map-container">-->
+<!--        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9782.71981046792!2d20.948394!3d52.218641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDEzJzQ2LjkiTiAyMcKwMDAnNDMuOSJF!5e0!3m2!1spl!2spl!4v1621331234567!5m2!1spl!2spl" allowfullscreen="" loading="lazy"></iframe>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+<section id="location" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Lokalizacja</h2>
+            <p>Apartament znajduje się przy ul. Przy Torach 4 w Warszawie, w doskonale skomunikowanej części miasta.</p>
         </div>
 
-        <div class="location-features">
-          <div class="location-feature">
-            <i class="fas fa-bus"></i>
-            <div class="location-feature-text">
-              <h5>Transport</h5>
-              <p>Doskonałe połączenia komunikacyjne</p>
-            </div>
-          </div>
-          <div class="location-feature">
-            <i class="fas fa-shopping-basket"></i>
-            <div class="location-feature-text">
-              <h5>Sklepy</h5>
-              <p>Lokalne sklepy i centrum handlowe w pobliżu</p>
-            </div>
-          </div>
-          <div class="location-feature">
-            <i class="fas fa-tree"></i>
-            <div class="location-feature-text">
-              <h5>Tereny zielone</h5>
-              <p>Park w zasięgu spaceru</p>
-            </div>
-          </div>
-          <div class="location-feature">
-            <i class="fas fa-shield-alt"></i>
-            <div class="location-feature-text">
-              <h5>Bezpieczeństwo</h5>
-              <p>Teren zamknięty, monitoring, ochrona</p>
-            </div>
-          </div>
+        <div class="map-container">
+            <div id="map" style="width: 100%; height: 500px;"></div>
         </div>
-      </div>
 
-      <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9782.71981046792!2d20.948394!3d52.218641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDEzJzQ2LjkiTiAyMcKwMDAnNDMuOSJF!5e0!3m2!1spl!2spl!4v1621331234567!5m2!1spl!2spl" allowfullscreen="" loading="lazy"></iframe>
-      </div>
+        <div class="location-advantages margin-t-3">
+            <div class="row">
+                <div class="col">
+                    <h3>W pobliżu znajdziesz:</h3>
+                    <ul class="location-list">
+                        <li><i class="fas fa-shopping-cart text-gold"></i> Sklep Biedronka - 350m</li>
+                        <li><i class="fas fa-train text-gold"></i> Stacja SKM/WKD Al. Jerozolimskie - 500m</li>
+                        <li><i class="fas fa-bus text-gold"></i> Przystanki komunikacji miejskiej - 200m</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
+<script>
+    // Inicjalizacja mapy
+    function initMap() {
+        // 52.20264937992224, 20.941982624978593
+        // Współrzędne ul. Przy Torach 4, Warszawa (przybliżone)
+        const mainLocation = {lat: 52.20264937992224, lng: 20.941982624978593};
+
+        // Tworzenie mapy
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            center: mainLocation,
+            styles: [
+                {
+                    "featureType": "all",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#f5f5f5"}]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#c0d6e9"}]
+                },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#d2e8ca"}]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#ffffff"}]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#e6e6e6"}]
+                }
+            ]
+        });
+
+        // Marker głównej lokalizacji (apartament)
+        const mainMarker = new google.maps.Marker({
+            position: mainLocation,
+            map: map,
+            title: "Apartament Premium - ul. Przy Torach 4",
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                fillColor: "#d4af37",
+                fillOpacity: 1,
+                strokeWeight: 0,
+                scale: 10
+            },
+            animation: google.maps.Animation.DROP
+        });
+
+        // Dodaj infowindow do głównego markera
+        const mainInfowindow = new google.maps.InfoWindow({
+            content: "<strong>Premium Apartments</strong><br>ul. Przy Torach 4<br>Warszawa"
+        });
+
+        mainMarker.addListener("click", () => {
+            mainInfowindow.open(map, mainMarker);
+        });
+
+        // Lokalizacja Biedronki
+        // 52.201524974459595, 20.93793785382585
+        const biedronkaLocation = {lat:  52.201524974459595, lng: 20.93793785382585};
+        const biedronkaMarker = new google.maps.Marker({
+            position: biedronkaLocation,
+            map: map,
+            title: "Biedronka",
+            icon: {
+                url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
+            }
+        });
+
+        const biedronkaInfo = new google.maps.InfoWindow({
+            content: "<strong>Biedronka</strong><br>Sklep spożywczy"
+        });
+
+        biedronkaMarker.addListener("click", () => {
+            biedronkaInfo.open(map, biedronkaMarker);
+        });
+
+        // Lokalizacja stacji SKM/WKD
+        const skmLocation = {lat: 52.2130, lng: 20.9520};
+        const skmMarker = new google.maps.Marker({
+            position: skmLocation,
+            map: map,
+            title: "Stacja SKM/WKD Al. Jerozolimskie",
+            icon: {
+                url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            }
+        });
+
+        const skmInfo = new google.maps.InfoWindow({
+            content: "<strong>Stacja SKM/WKD</strong><br>Al. Jerozolimskie"
+        });
+
+        skmMarker.addListener("click", () => {
+            skmInfo.open(map, skmMarker);
+        });
+    }
+</script>
+
+<!-- Załaduj Google Maps API z twoim kluczem API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=TWÓJ_KLUCZ_API&callback=initMap" async defer></script>
 <section id="contact" class="contact-section dark">
-  <div class="container">
-    <div class="section-header">
-      <h2>Skontaktuj się z nami</h2>
-      <p>Zainteresowała Cię nasza oferta? Skontaktuj się z nami, aby umówić prezentację lub uzyskać więcej informacji</p>
+    <div class="container">
+        <div class="section-header">
+            <h2>Skontaktuj się z nami</h2>
+            <p>Zainteresowała Cię nasza oferta? Skontaktuj się z nami, aby umówić prezentację lub uzyskać więcej
+                informacji</p>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Masz pytania?</h3>
+                <p>Jesteśmy do Twojej dyspozycji. Odpowiemy na wszystkie pytania i pomożemy w wyborze idealnego terminu
+                    do prezentacji mieszkania.</p>
+
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Telefon</h4>
+                        <p>+48 123 456 789</p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <p>kontakt@premiumapartments.pl</p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Adres</h4>
+                        <p>ul. Przy Torach 4, Warszawa</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Napisz do nas</h3>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Imię i nazwisko" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Adres email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Numer telefonu">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Twoja wiadomość" required></textarea>
+                    </div>
+
+                    <button type="submit" class="form-btn">Wyślij wiadomość</button>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <div class="contact-content">
-      <div class="contact-info">
-        <h3>Masz pytania?</h3>
-        <p>Jesteśmy do Twojej dyspozycji. Odpowiemy na wszystkie pytania i pomożemy w wyborze idealnego terminu do prezentacji mieszkania.</p>
-
-        <div class="contact-method">
-          <div class="contact-icon">
-            <i class="fas fa-phone"></i>
-          </div>
-          <div class="contact-text">
-            <h4>Telefon</h4>
-            <p>+48 123 456 789</p>
-          </div>
-        </div>
-
-        <div class="contact-method">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <div class="contact-text">
-            <h4>Email</h4>
-            <p>kontakt@premiumapartments.pl</p>
-          </div>
-        </div>
-
-        <div class="contact-method">
-          <div class="contact-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <div class="contact-text">
-            <h4>Adres</h4>
-            <p>ul. Przy Torach 4, Warszawa</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-form">
-        <h3>Napisz do nas</h3>
-        <form action="#" method="POST">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Imię i nazwisko" required>
-          </div>
-
-          <div class="form-group">
-            <input type="email" class="form-control" placeholder="Adres email" required>
-          </div>
-
-          <div class="form-group">
-            <input type="tel" class="form-control" placeholder="Numer telefonu">
-          </div>
-
-          <div class="form-group">
-            <textarea class="form-control" placeholder="Twoja wiadomość" required></textarea>
-          </div>
-
-          <button type="submit" class="form-btn">Wyślij wiadomość</button>
-        </form>
-      </div>
-    </div>
-  </div>
 </section>
 
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col footer-about">
-        <div class="footer-logo">
-          <span class="footer-logo-text">Premium<span>Apartments</span></span>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col footer-about">
+                <div class="footer-logo">
+                    <span class="footer-logo-text">Premium<span>Apartments</span></span>
+                </div>
+                <p>Oferujemy luksusowe mieszkania na wynajem w nowoczesnych budynkach z 2022 roku, zapewniając najwyższy
+                    standard wykonania i obsługi klienta. Nasze nieruchomości to połączenie funkcjonalności, komfortu i
+                    doskonałej lokalizacji.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Szybkie linki</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">O mieszkaniu</a></li>
+                    <li><a href="#specs">Szczegóły</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#location">Lokalizacja</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Informacje</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Polityka prywatności</a></li>
+                    <li><a href="#">Warunki wynajmu</a></li>
+                    <li><a href="#">O nas</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <ul class="footer-links">
+                    <li><a href="tel:+48123456789">+48 123 456 789</a></li>
+                    <li><a href="mailto:kontakt@premiumapartments.pl">kontakt@premiumapartments.pl</a></li>
+                    <li><a href="#">ul. Przy Torach 4, Warszawa</a></li>
+                </ul>
+            </div>
         </div>
-        <p>Oferujemy luksusowe mieszkania na wynajem w nowoczesnych budynkach z 2022 roku, zapewniając najwyższy standard wykonania i obsługi klienta. Nasze nieruchomości to połączenie funkcjonalności, komfortu i doskonałej lokalizacji.</p>
-        <div class="social-links">
-          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+
+        <div class="copyright">
+            <p>&copy; 2024 Premium Apartments. Wszelkie prawa zastrzeżone.</p>
         </div>
-      </div>
-
-      <div class="footer-col">
-        <h4>Szybkie linki</h4>
-        <ul class="footer-links">
-          <li><a href="#about">O mieszkaniu</a></li>
-          <li><a href="#specs">Szczegóły</a></li>
-          <li><a href="#gallery">Galeria</a></li>
-          <li><a href="#location">Lokalizacja</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Informacje</h4>
-        <ul class="footer-links">
-          <li><a href="#">Polityka prywatności</a></li>
-          <li><a href="#">Warunki wynajmu</a></li>
-          <li><a href="#">O nas</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Kontakt</h4>
-        <ul class="footer-links">
-          <li><a href="tel:+48123456789">+48 123 456 789</a></li>
-          <li><a href="mailto:kontakt@premiumapartments.pl">kontakt@premiumapartments.pl</a></li>
-          <li><a href="#">ul. Przy Torach 4, Warszawa</a></li>
-        </ul>
-      </div>
     </div>
-
-    <div class="copyright">
-      <p>&copy; 2024 Premium Apartments. Wszelkie prawa zastrzeżone.</p>
-    </div>
-  </div>
 </footer>
 
-<script>
-  // Scroll header effect
-  window.addEventListener('scroll', function() {
-    const header = document.getElementById('site-header');
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-
-  // Initialize ScrollReveal
-  const sr = ScrollReveal({
-    origin: 'bottom',
-    distance: '30px',
-    duration: 1000,
-    delay: 200,
-    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
-    reset: false
-  });
-
-  sr.reveal('.section-header', { delay: 100 });
-  sr.reveal('.property-text', { delay: 200 });
-  sr.reveal('.property-image', { delay: 300 });
-  sr.reveal('.gallery-tabs', { delay: 100 });
-  sr.reveal('.gallery-item', { interval: 100 });
-  sr.reveal('.spec-card', { interval: 100 });
-  sr.reveal('.location-text', { delay: 200 });
-  sr.reveal('.map-container', { delay: 300 });
-  sr.reveal('.contact-info', { delay: 200 });
-  sr.reveal('.contact-form', { delay: 300 });
-  sr.reveal('.footer-col', { interval: 100 });
-
-  // Gallery tabs functionality
-  const galleryTabs = document.querySelectorAll('.gallery-tab');
-
-  galleryTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Remove active class from all tabs
-      galleryTabs.forEach(t => t.classList.remove('active'));
-      // Add active class to clicked tab
-      tab.classList.add('active');
-      // Here you would implement filtering logic if needed
-    });
-  });
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0TF-SbLzhFW50-gfG398z3A1SbMdXhjg&callback=initMap" async
+        defer>
 </script>
+
 </body>
 </html>
