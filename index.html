@@ -386,7 +386,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=90');
+            background-image: url('assets/salon/salon_2.jpg');
             background-size: cover;
             background-position: center;
             opacity: 0.5;
@@ -790,13 +790,17 @@
         }
 
         .gallery-item {
-            transition: var(--transition-smooth);
+            transition: opacity var(--transition-smooth), transform var(--transition-smooth);
             opacity: 1;
             transform: translateY(0);
+            display: block;
         }
 
         .gallery-item.hidden {
-            display: none;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            visibility: hidden;
         }
 
         .gallery-image-wrapper {
@@ -1646,25 +1650,13 @@
             <!-- Salon -->
             <div class="gallery-item" data-category="salon">
                 <div class="gallery-image-wrapper">
-                    <img src="assets/salon/salon_1-min.jpg" data-full="assets/salon/salon_1.jpg" alt="Elegancki salon z dostępem do tarasu" class="gallery-image">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-content">
-                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
-                            <h4 class="gallery-title">Salon</h4>
-                            <p class="gallery-description">Przestronny salon z panoramicznym widokiem i dostępem do tarasu</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="salon">
-                <div class="gallery-image-wrapper">
-                    <img src="assets/salon/salon_2-min.jpg" data-full="assets/salon/salon_2.jpg" alt="Komfortowa strefa wypoczynkowa" class="gallery-image">
+                    <img src="assets/salon/salon_1-min.jpg" data-full="assets/salon/salon_1.jpg"
+                         alt="Elegancki salon z dostępem do tarasu" class="gallery-image">
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
                             <h4 class="gallery-title">Strefa wypoczynkowa</h4>
-                            <p class="gallery-description">Wygodna sofa i fotel dla komfortowego wypoczynku</p>
+                            <p class="gallery-description">Strefa wypoczynkowa z widokiem i dostępem do ogródka</p>
                         </div>
                     </div>
                 </div>
@@ -1672,12 +1664,13 @@
 
             <div class="gallery-item" data-category="salon">
                 <div class="gallery-image-wrapper">
-                    <img src="assets/salon/salon_3-min.jpg" data-full="assets/salon/salon_3.jpg" alt="Eleganckie detale salonu" class="gallery-image">
+                    <img src="assets/salon/salon_2-min.jpg" data-full="assets/salon/salon_2.jpg"
+                         alt="Komfortowa strefa wypoczynkowa" class="gallery-image">
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
-                            <h4 class="gallery-title">Detale</h4>
-                            <p class="gallery-description">Luksusowe wykończenie i starannie dobrane dodatki</p>
+                            <h4 class="gallery-title">Strefa wypoczynkowa</h4>
+                            <p class="gallery-description">Wygodna kanapa z funcją spania</p>
                         </div>
                     </div>
                 </div>
@@ -1685,12 +1678,13 @@
 
             <div class="gallery-item" data-category="salon">
                 <div class="gallery-image-wrapper">
-                    <img src="assets/salon/salon_4-min.jpg" data-full="assets/salon/salon_4.jpg" alt="Jadalnia połączona z salonem" class="gallery-image">
+                    <img src="assets/salon/salon_3-min.jpg" data-full="assets/salon/salon_3.jpg"
+                         alt="Eleganckie detale salonu" class="gallery-image">
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
-                            <h4 class="gallery-title">Jadalnia</h4>
-                            <p class="gallery-description">Przestrzeń jadalniana połączona z salonem</p>
+                            <h4 class="gallery-title">Sypialnia</h4>
+                            <p class="gallery-description">Część sypialna odgrodzona dekoracyjnymi lamelami</p>
                         </div>
                     </div>
                 </div>
@@ -1698,12 +1692,14 @@
 
             <div class="gallery-item" data-category="salon">
                 <div class="gallery-image-wrapper">
-                    <img src="assets/salon/salon_5-min.jpg" data-full="assets/salon/salon_5.jpg" alt="Widok na salon z jadalnią" class="gallery-image">
+                    <img src="assets/salon/salon_4-min.jpg" data-full="assets/salon/salon_4.jpg"
+                         alt="Jadalnia połączona z salonem" class="gallery-image">
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
-                            <h4 class="gallery-title">Salon z jadalnią</h4>
-                            <p class="gallery-description">Przestronna, otwarta przestrzeń dzienna</p>
+                            <h4 class="gallery-title">Nasłoneczenie</h4>
+                            <p class="gallery-description">Duże okna oraz drzwi ogrodowe, zapewniają odpowiednie
+                                nasłonecznienie, dzięki odpowiedniej ekspozycji na zachód</p>
                         </div>
                     </div>
                 </div>
@@ -1711,12 +1707,28 @@
 
             <div class="gallery-item" data-category="salon">
                 <div class="gallery-image-wrapper">
-                    <img src="assets/salon/salon_6-min.jpg" data-full="assets/salon/salon_6.jpg" alt="Dodatkowe ujęcie salonu" class="gallery-image">
+                    <img src="assets/salon/salon_5-min.jpg" data-full="assets/salon/salon_5.jpg"
+                         alt="Widok na salon z jadalnią" class="gallery-image">
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
-                            <h4 class="gallery-title">Widok salonu</h4>
-                            <p class="gallery-description">Designerska przestrzeń wypełniona światłem</p>
+                            <h4 class="gallery-title">Przechowywanie</h4>
+                            <p class="gallery-description">Duża szafa w komunikacji, do przechowywania ubrań</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="salon">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/salon/salon_6-min.jpg" data-full="assets/salon/salon_6.jpg"
+                         alt="Dodatkowe ujęcie salonu" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Przestrzeń robocza</h4>
+                            <p class="gallery-description">Odpowiednia wysokość blatu oraz fotele nadają się również
+                                jako przestrzeń robocza</p>
                         </div>
                     </div>
                 </div>
@@ -1725,12 +1737,14 @@
             <!-- Kuchnia -->
             <div class="gallery-item" data-category="kuchnia">
                 <div class="gallery-image-wrapper">
-                    <img src="assets/kuchnia/kuchnia_1-min.jpg" data-full="assets/kuchnia/kuchnia_1.jpg" alt="Nowoczesna kuchnia" class="gallery-image">
+                    <img src="assets/kuchnia/kuchnia_1-min.jpg" data-full="assets/kuchnia/kuchnia_1.jpg"
+                         alt="Nowoczesna kuchnia" class="gallery-image">
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
                             <h4 class="gallery-title">Kuchnia</h4>
-                            <p class="gallery-description">Nowoczesna kuchnia z wysokiej jakości sprzętem AGD</p>
+                            <p class="gallery-description">Nowoczesna kuchnia z wysokiej jakości sprzętem - zmywarka,
+                                lodówka, płyta indukcyjna, okap oraz piekarnik</p>
                         </div>
                     </div>
                 </div>
@@ -1739,12 +1753,13 @@
             <!-- Sypialnia -->
             <div class="gallery-item" data-category="sypialnia">
                 <div class="gallery-image-wrapper">
-                    <img src="assets/sypialnia/sypialnia_1-min.jpg" data-full="assets/sypialnia/sypialnia_1.jpg" alt="Główna sypialnia" class="gallery-image">
+                    <img src="assets/sypialnia/sypialnia_1-min.jpg" data-full="assets/sypialnia/sypialnia_1.jpg"
+                         alt="Główna sypialnia" class="gallery-image">
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
-                            <h4 class="gallery-title">Sypialnia główna</h4>
-                            <p class="gallery-description">Przestronna sypialnia z wygodnym łóżkiem i eleganckim wystrojem</p>
+                            <h4 class="gallery-title">Strefa sypialniana</h4>
+                            <p class="gallery-description">Łóżko o szerokości 160 cm z funkcją przechowywania</p>
                         </div>
                     </div>
                 </div>
@@ -1752,12 +1767,13 @@
 
             <div class="gallery-item" data-category="sypialnia">
                 <div class="gallery-image-wrapper">
-                    <img src="assets/sypialnia/sypialnia_2-min.jpg" data-full="assets/sypialnia/sypialnia_2.jpg" alt="Detale sypialni" class="gallery-image">
+                    <img src="assets/sypialnia/sypialnia_2-min.jpg" data-full="assets/sypialnia/sypialnia_2.jpg"
+                         alt="Detale sypialni" class="gallery-image">
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
-                            <h4 class="gallery-title">Strefa wypoczynkowa w sypialni</h4>
-                            <p class="gallery-description">Komfortowa przestrzeń do relaksu</p>
+                            <h4 class="gallery-title">Strefa sypialniana - przechowywanie</h4>
+                            <p class="gallery-description">Obok łożka dostępna pojemna szafa, półki nad łózkiem</p>
                         </div>
                     </div>
                 </div>
@@ -1766,12 +1782,13 @@
             <!-- Łazienka -->
             <div class="gallery-item" data-category="lazienka">
                 <div class="gallery-image-wrapper">
-                    <img src="assets/lazienka/lazienka_1-min.jpg" data-full="assets/lazienka/lazienka_1.jpg" alt="Nowoczesna łazienka" class="gallery-image">
+                    <img src="assets/lazienka/lazienka_1-min.jpg" data-full="assets/lazienka/lazienka_1.jpg"
+                         alt="Nowoczesna łazienka" class="gallery-image">
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
                             <h4 class="gallery-title">Łazienka</h4>
-                            <p class="gallery-description">Łazienka z kabiną prysznicową prysznicem</p>
+                            <p class="gallery-description">Łazienka z kabiną prysznicową</p>
                         </div>
                     </div>
                 </div>
@@ -1779,12 +1796,14 @@
 
             <div class="gallery-item" data-category="lazienka">
                 <div class="gallery-image-wrapper">
-                    <img src="assets/lazienka/lazienka_2-min.jpg" data-full="assets/lazienka/lazienka_2.jpg" alt="Wyposażenie łazienki" class="gallery-image">
+                    <img src="assets/lazienka/lazienka_2-min.jpg" data-full="assets/lazienka/lazienka_2.jpg"
+                         alt="Wyposażenie łazienki" class="gallery-image">
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
                             <h4 class="gallery-title">Wyposażenie łazienki</h4>
-                            <p class="gallery-description">Eleganckie wykończenie i wysokiej jakości ceramika, łazienka wyposażona w pralko-suszarkę</p>
+                            <p class="gallery-description">Eleganckie wykończenie i wysokiej jakości ceramika, łazienka
+                                wyposażona w pralko-suszarkę</p>
                         </div>
                     </div>
                 </div>
@@ -2063,7 +2082,7 @@
                     </div>
                     <div class="contact-text">
                         <h4>Telefon</h4>
-                        <p>+48 123 456 789</p>
+                        <p>+48 727 652 669</p>
                     </div>
                 </div>
 
@@ -2073,7 +2092,7 @@
                     </div>
                     <div class="contact-text">
                         <h4>Email</h4>
-                        <p>kontakt@premiumapartments.pl</p>
+                        <p>radoslaw.okomski@gmail.com</p>
                     </div>
                 </div>
 
@@ -2201,7 +2220,7 @@
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         // Filtrowanie galerii
         const galleryTabs = document.querySelectorAll('.gallery-tab');
         const galleryItems = document.querySelectorAll('.gallery-item');
@@ -2216,12 +2235,27 @@
 
                 const category = tab.getAttribute('data-category');
 
-                galleryItems.forEach(item => item.classList.remove('hidden'))
                 // Filtruj elementy galerii
                 galleryItems.forEach(item => {
                     if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.opacity = '1';
+                        item.style.visibility = 'visible';
+                        item.style.position = 'relative';
+                        setTimeout(() => {
+                            if (!item.classList.contains('hidden')) {
+                                item.style.display = 'block';
+                            }
+                        }, 300);
                         item.classList.remove('hidden');
                     } else {
+                        item.style.opacity = '0';
+                        item.style.visibility = 'hidden';
+                        item.style.position = 'absolute';
+                        setTimeout(() => {
+                            if (item.classList.contains('hidden')) {
+                                item.style.display = 'none';
+                            }
+                        }, 300);
                         item.classList.add('hidden');
                     }
                 });
