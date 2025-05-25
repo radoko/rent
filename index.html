@@ -1771,7 +1771,7 @@
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
                             <h4 class="gallery-title">Łazienka</h4>
-                            <p class="gallery-description">Luksusowa łazienka z prysznicem typu walk-in</p>
+                            <p class="gallery-description">Łazienka z kabiną prysznicową prysznicem</p>
                         </div>
                     </div>
                 </div>
@@ -1784,7 +1784,7 @@
                         <div class="gallery-overlay-content">
                             <span class="gallery-icon"><i class="fas fa-expand"></i></span>
                             <h4 class="gallery-title">Wyposażenie łazienki</h4>
-                            <p class="gallery-description">Eleganckie wykończenie i wysokiej jakości ceramika</p>
+                            <p class="gallery-description">Eleganckie wykończenie i wysokiej jakości ceramika, łazienka wyposażona w pralko-suszarkę</p>
                         </div>
                     </div>
                 </div>
@@ -2216,6 +2216,7 @@
 
                 const category = tab.getAttribute('data-category');
 
+                galleryItems.forEach(item => item.classList.remove('hidden'))
                 // Filtruj elementy galerii
                 galleryItems.forEach(item => {
                     if (category === 'all' || item.getAttribute('data-category') === category) {
