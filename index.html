@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Apartments - Luksusowe Mieszkanie 31m² z ogródkiem</title>
+    <title>Premium Apartments - Luksusowe Mieszkanie 31 m² z ogródkiem</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
           rel="stylesheet">
@@ -750,129 +750,204 @@
             color: var(--primary-dark);
         }
 
-        /* ===== Gallery Section ===== */
+        /* ===== Galeria ===== */
         .gallery-section {
-            background-color: var(--white);
-            overflow: hidden;
+            background-color: var(--off-white);
+            padding: 6rem 0;
         }
 
         .gallery-tabs {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
             flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 3rem;
         }
 
         .gallery-tab {
-            padding: 0.7rem 1.5rem;
-            background: transparent;
-            border: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--dark-gray);
             cursor: pointer;
+            padding: 0.8rem 2rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            color: var(--primary-dark);
+            border: 2px solid var(--gold);
             transition: var(--transition-smooth);
             position: relative;
         }
 
-        .gallery-tab::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
+        .gallery-tab:hover, .gallery-tab.active {
             background-color: var(--gold);
-            transition: var(--transition-smooth);
+            color: var(--white);
         }
 
-        .gallery-tab:hover,
-        .gallery-tab.active {
-            color: var(--gold);
-        }
-
-        .gallery-tab:hover::after,
-        .gallery-tab.active::after {
-            width: 100%;
-        }
-
-        .gallery-grid {
+        .gallery-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .gallery-item {
-            position: relative;
-            border-radius: 5px;
-            overflow: hidden;
-            height: 350px;
-            box-shadow: var(--shadow-soft);
-            cursor: pointer;
+            transition: var(--transition-smooth);
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7));
-            z-index: 1;
-            opacity: 0;
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        .gallery-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: var(--shadow-soft);
+            height: 280px;
             transition: var(--transition-smooth);
         }
 
-        .gallery-item:hover::before {
-            opacity: 1;
+        .gallery-image-wrapper:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
         }
 
-        .gallery-item img {
+        .gallery-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition-smooth);
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.1);
+        .gallery-image-wrapper:hover .gallery-image {
+            transform: scale(1.05);
         }
 
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .gallery-caption {
+        .gallery-overlay {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             width: 100%;
-            padding: 2rem;
-            color: var(--white);
-            z-index: 2;
+            height: 100%;
+            background: linear-gradient(to top, rgba(30, 58, 41, 0.85), rgba(30, 58, 41, 0.4));
+            display: flex;
+            align-items: flex-end;
             opacity: 0;
-            transform: translateY(20px);
             transition: var(--transition-smooth);
         }
 
-        .gallery-item:hover .gallery-caption {
+        .gallery-image-wrapper:hover .gallery-overlay {
             opacity: 1;
+        }
+
+        .gallery-overlay-content {
+            padding: 2rem;
+            transform: translateY(20px);
+            transition: var(--transition-smooth);
+            transition-delay: 0.1s;
+            width: 100%;
+        }
+
+        .gallery-image-wrapper:hover .gallery-overlay-content {
             transform: translateY(0);
         }
 
-        .gallery-caption h4 {
+        .gallery-icon {
+            color: var(--gold);
             font-size: 1.5rem;
+            display: inline-block;
             margin-bottom: 0.5rem;
-            color: var(--white);
         }
 
-        .gallery-caption p {
+        .gallery-title {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .gallery-description {
+            color: var(--off-white);
             font-size: 0.9rem;
             margin-bottom: 0;
-            opacity: 0.9;
+        }
+
+        /* Modal dla zdjęć */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+        }
+
+        .gallery-modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        .gallery-modal-image {
+            max-width: 100%;
+            max-height: 85vh;
+            box-shadow: var(--shadow-hard);
+        }
+
+        .gallery-modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .gallery-modal-close:hover {
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .gallery-tabs {
+                gap: 1rem;
+            }
+
+            .gallery-tab {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.8rem;
+            }
+
+            .gallery-image-wrapper {
+                height: 240px;
+            }
+
+            .gallery-overlay-content {
+                padding: 1.5rem;
+            }
+
+            .gallery-title {
+                font-size: 1.2rem;
+            }
+
+            .gallery-description {
+                font-size: 0.8rem;
+            }
         }
 
         /* ===== Location Section ===== */
@@ -1371,7 +1446,7 @@
     <div class="container">
         <div class="hero-content">
             <p class="hero-subtitle">Oferta najmu</p>
-            <h1>Mieszkanie 31m² z&nbsp;ogródkiem</h1>
+            <h1>Mieszkanie <strong>31</strong> m² z&nbsp;ogródkiem</h1>
             <p>Nowoczesne mieszkanie na parterze z własnym ogródkiem i miejscem parkingowym w cichej i bezpiecznej
                 okolicy. Możliwość wystawienia faktury VAT.</p>
             <div class="hero-price">
@@ -1547,66 +1622,162 @@
 
 <section id="gallery" class="gallery-section">
     <div class="container">
-        <div class="section-header">
-            <h2>Galeria</h2>
-            <p>Zobacz jak prezentuje się nasza przestrzeń z każdej perspektywy</p>
+        <h2 class="text-center">Galeria wnętrz</h2>
+        <p class="text-center margin-b-3">Odkryj każdy zakątek naszego luksusowego apartamentu</p>
+
+        <div class="gallery-tabs margin-b-3">
+            <div class="gallery-tab active" data-category="all">Wszystkie</div>
+            <div class="gallery-tab" data-category="salon">Salon</div>
+            <div class="gallery-tab" data-category="kuchnia">Kuchnia</div>
+            <div class="gallery-tab" data-category="sypialnia">Sypialnia</div>
+            <div class="gallery-tab" data-category="lazienka">Łazienka</div>
         </div>
 
-        <div class="gallery-tabs">
-            <button class="gallery-tab active">Wszystkie</button>
-            <button class="gallery-tab">Wnętrze</button>
-            <button class="gallery-tab">Ogródek</button>
-            <button class="gallery-tab">Łazienka</button>
-            <button class="gallery-tab">Budynek</button>
-        </div>
+        <div class="gallery-container">
+            <!-- Salon -->
+            <div class="gallery-item" data-category="salon">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/salon/salon_1-min.jpg" data-full="assets/salon/salon_1.jpg" alt="Elegancki salon z dostępem do tarasu" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Salon</h4>
+                            <p class="gallery-description">Przestronny salon z panoramicznym widokiem i dostępem do tarasu</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                     alt="Aneks kuchenny">
-                <div class="gallery-caption">
-                    <h4>Aneks kuchenny</h4>
-                    <p>W pełni wyposażony w nowoczesny sprzęt AGD</p>
+            <div class="gallery-item" data-category="salon">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/salon/salon_2-min.jpg" data-full="assets/salon/salon_2.jpg" alt="Komfortowa strefa wypoczynkowa" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Strefa wypoczynkowa</h4>
+                            <p class="gallery-description">Wygodna sofa i fotel dla komfortowego wypoczynku</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                     alt="Strefa wypoczynkowa">
-                <div class="gallery-caption">
-                    <h4>Strefa wypoczynkowa</h4>
-                    <p>Komfortowa przestrzeń do relaksu</p>
+
+            <div class="gallery-item" data-category="salon">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/salon/salon_3-min.jpg" data-full="assets/salon/salon_3.jpg" alt="Eleganckie detale salonu" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Detale</h4>
+                            <p class="gallery-description">Luksusowe wykończenie i starannie dobrane dodatki</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                     alt="Łazienka">
-                <div class="gallery-caption">
-                    <h4>Łazienka</h4>
-                    <p>Nowoczesna łazienka z prysznicem</p>
+
+            <div class="gallery-item" data-category="salon">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/salon/salon_4-min.jpg" data-full="assets/salon/salon_4.jpg" alt="Jadalnia połączona z salonem" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Jadalnia</h4>
+                            <p class="gallery-description">Przestrzeń jadalniana połączona z salonem</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                     alt="Ogródek">
-                <div class="gallery-caption">
-                    <h4>Prywatny ogródek</h4>
-                    <p>Przestrzeń do relaksu na świeżym powietrzu</p>
+
+            <div class="gallery-item" data-category="salon">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/salon/salon_5-min.jpg" data-full="assets/salon/salon_5.jpg" alt="Widok na salon z jadalnią" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Salon z jadalnią</h4>
+                            <p class="gallery-description">Przestronna, otwarta przestrzeń dzienna</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                     alt="Strefa jadalniana">
-                <div class="gallery-caption">
-                    <h4>Strefa jadalniana</h4>
-                    <p>Wygodne miejsce do wspólnych posiłków</p>
+
+            <div class="gallery-item" data-category="salon">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/salon/salon_6-min.jpg" data-full="assets/salon/salon_6.jpg" alt="Dodatkowe ujęcie salonu" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Widok salonu</h4>
+                            <p class="gallery-description">Designerska przestrzeń wypełniona światłem</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1551516594-56cb78394645?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                     alt="Widok ogólny">
-                <div class="gallery-caption">
-                    <h4>Przestrzeń dzienna</h4>
-                    <p>Otwarta i funkcjonalna aranżacja</p>
+
+            <!-- Kuchnia -->
+            <div class="gallery-item" data-category="kuchnia">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/kuchnia/kuchnia_1-min.jpg" data-full="assets/kuchnia/kuchnia_1.jpg" alt="Nowoczesna kuchnia" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Kuchnia</h4>
+                            <p class="gallery-description">Nowoczesna kuchnia z wysokiej jakości sprzętem AGD</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sypialnia -->
+            <div class="gallery-item" data-category="sypialnia">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/sypialnia/sypialnia_1-min.jpg" data-full="assets/sypialnia/sypialnia_1.jpg" alt="Główna sypialnia" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Sypialnia główna</h4>
+                            <p class="gallery-description">Przestronna sypialnia z wygodnym łóżkiem i eleganckim wystrojem</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="sypialnia">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/sypialnia/sypialnia_2-min.jpg" data-full="assets/sypialnia/sypialnia_2.jpg" alt="Detale sypialni" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Strefa wypoczynkowa w sypialni</h4>
+                            <p class="gallery-description">Komfortowa przestrzeń do relaksu</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Łazienka -->
+            <div class="gallery-item" data-category="lazienka">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/lazienka/lazienka_1-min.jpg" data-full="assets/lazienka/lazienka_1.jpg" alt="Nowoczesna łazienka" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Łazienka</h4>
+                            <p class="gallery-description">Luksusowa łazienka z prysznicem typu walk-in</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="lazienka">
+                <div class="gallery-image-wrapper">
+                    <img src="assets/lazienka/lazienka_2-min.jpg" data-full="assets/lazienka/lazienka_2.jpg" alt="Wyposażenie łazienki" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <h4 class="gallery-title">Wyposażenie łazienki</h4>
+                            <p class="gallery-description">Eleganckie wykończenie i wysokiej jakości ceramika</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1910,8 +2081,9 @@
 
             <div class="contact-form">
                 <h3>Napisz do nas</h3>
-                <form action="https://docs.google.com/forms/d/e/1FAIpQLSdwRLu_DqbIA2yHrT1PwpUyyHcpr-sf63y-kBLDtpBJ2IdwCQ/formResponse"
-                      method="POST" target="_self">
+                <form id="contactForm"
+                      action="https://docs.google.com/forms/d/e/1FAIpQLSdwRLu_DqbIA2yHrT1PwpUyyHcpr-sf63y-kBLDtpBJ2IdwCQ/formResponse"
+                      method="POST">
                     <div class="form-group">
                         <input type="text" name="entry.1123087964" class="form-control" placeholder="Imię i nazwisko"
                                required>
@@ -1933,6 +2105,28 @@
 
                     <button type="submit" class="form-btn">Wyślij wiadomość</button>
                 </form>
+                <script>
+                    document.getElementById('contactForm').addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        const formData = new FormData(this);
+                        fetch(this.action, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            body: formData
+                        })
+                            .then(() => {
+                                this.innerHTML = `
+                                <div style="text-align: center; padding: 2rem;">
+                                    <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem;"></i>
+                                    <h3>Dziękujemy za wiadomość!</h3>
+                                    <p>Skontaktujemy się z Tobą najszybciej jak to możliwe.</p>
+                                </div>
+                            `;
+                            })
+                            .catch(error => console.error('Error:', error));
+                    });
+                </script>
             </div>
         </div>
     </div>
@@ -1997,5 +2191,101 @@
         defer>
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Filtrowanie galerii
+        const galleryTabs = document.querySelectorAll('.gallery-tab');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        // Dodaj obsługę kliknięć na zakładki
+        galleryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Usuń klasę active ze wszystkich zakładek
+                galleryTabs.forEach(t => t.classList.remove('active'));
+                // Dodaj klasę active do klikniętej zakładki
+                tab.classList.add('active');
+
+                const category = tab.getAttribute('data-category');
+
+                // Filtruj elementy galerii
+                galleryItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Dodaj modal do powiększania zdjęć
+        const body = document.body;
+
+        // Stwórz modal
+        const modal = document.createElement('div');
+        modal.className = 'gallery-modal';
+
+        const modalContent = document.createElement('div');
+        modalContent.className = 'gallery-modal-content';
+
+        const modalImage = document.createElement('img');
+        modalImage.className = 'gallery-modal-image';
+
+        const closeBtn = document.createElement('div');
+        closeBtn.className = 'gallery-modal-close';
+        closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+
+        modalContent.appendChild(modalImage);
+        modalContent.appendChild(closeBtn);
+        modal.appendChild(modalContent);
+        body.appendChild(modal);
+
+        // Dodaj obsługę kliknięć na zdjęcia
+        const galleryImages = document.querySelectorAll('.gallery-image');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', (e) => {
+                e.preventDefault();
+                const fullSrc = img.getAttribute('data-full');
+                modalImage.src = fullSrc;
+                modal.classList.add('active');
+                body.style.overflow = 'hidden';
+            });
+        });
+
+        // Zamykanie modalu
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            body.style.overflow = '';
+        });
+
+        // Zamykanie modalu po kliknięciu poza zdjęciem
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+
+        // Obsługa klawisza Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+
+        // Animacja przy przewijaniu
+        if (typeof ScrollReveal !== 'undefined') {
+            ScrollReveal().reveal('.gallery-item', {
+                distance: '50px',
+                duration: 1000,
+                interval: 100,
+                origin: 'bottom',
+                easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+            });
+        }
+    });
+</script>
 </body>
 </html>
