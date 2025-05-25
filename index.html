@@ -894,6 +894,8 @@
 
         .gallery-modal.active {
             display: flex;
+            opacity: 1;
+            visibility: visible;
         }
 
         .gallery-modal-content {
@@ -1654,7 +1656,7 @@
                          alt="Elegancki salon z dostępem do tarasu" class="gallery-image">
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-content">
-                            <span class="gallery-icon"><i class="fas fa-expand"></i></span>
+                            <span class="gallery-icon" onclick="openModal(this)"><i class="fas fa-expand"></i></span>
                             <h4 class="gallery-title">Strefa wypoczynkowa</h4>
                             <p class="gallery-description">Strefa wypoczynkowa z widokiem i dostępem do ogródka</p>
                         </div>
@@ -2221,6 +2223,16 @@
 </script>
 
 <script>
+    function openModal(element) {
+        const imgElement = element.closest('.gallery-image-wrapper').querySelector('.gallery-image');
+        const fullSrc = imgElement.getAttribute('data-full');
+        const modal = document.querySelector('.gallery-modal');
+        const modalImage = modal.querySelector('.gallery-modal-image');
+        modalImage.src = fullSrc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         // Filtrowanie galerii
         const galleryTabs = document.querySelectorAll('.gallery-tab');
@@ -2285,8 +2297,9 @@
         modal.appendChild(modalContent);
         body.appendChild(modal);
 
-        // Dodaj obsługę kliknięć na zdjęcia
+        // Dodaj obsługę kliknięć na zdjęcia i ikony
         const galleryImages = document.querySelectorAll('.gallery-image');
+        const galleryIcons = document.querySelectorAll('.gallery-icon');
 
         galleryImages.forEach(img => {
             img.addEventListener('click', (e) => {
@@ -2295,6 +2308,13 @@
                 modalImage.src = fullSrc;
                 modal.classList.add('active');
                 body.style.overflow = 'hidden';
+            });
+        });
+
+        galleryIcons.forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(icon);
             });
         });
 
